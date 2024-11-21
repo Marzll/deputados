@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Busca de Deputados</h2>
+    <form [formGroup]="form" (ngSubmit)="buscar()">
+      <div>
+        <label for="nome">Nome:</label>
+        <input
+          id="nome" formControlName="nome" type="text"
+          placeholder="Digite o nome do deputado"/>
+      </div> <br>
+      <div>
+        <label for="partido">Partido:</label>
+        <input
+          id="partido" formControlName="partido" type="text"
+          placeholder="Digite a sigla do partido"/>
+      </div> <br>
+      <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+  
+    <div *ngIf="deputados.length > 0">
+      <h3>Resultados</h3>
+      <ul>
+        <li *ngFor="let deputado of deputados">
+          <img [src]="deputado.foto" alt="{{ deputado.nome }}" width="50" />
+          {{ deputado.nome }} - {{ deputado.partido }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
